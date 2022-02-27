@@ -10,7 +10,7 @@ class UsuarioModel extends MainModel
 {
     protected function getUsuario($dados) {
         $pdo = parent::connection();
-        $sql = "SELECT * FROM usuarios WHERE nome = :nome AND senha = :senha";
+        $sql = "SELECT * FROM usuario WHERE nome = :nome AND senha = :senha";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(":nome", $dados['usuario']);
         $statement->bindParam(":senha", $dados['senha']);

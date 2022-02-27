@@ -28,7 +28,7 @@ class UsuarioController extends UsuarioModel
 
         if ($consultaUsuario->rowCount() == 1) {
             $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
-            session_start(['name' => 'cursos']);
+            session_start(['name' => 'curso']);
             $_SESSION['login_g'] = $usuario['nome'];
             $_SESSION['nome_g'] = $usuario['nome'];
             $_SESSION['usuario_id_g'] = $usuario['id'];
@@ -38,18 +38,18 @@ class UsuarioController extends UsuarioModel
             } else {
                 if ($modulo == 8) {
                     $_SESSION['edital_s'] = $edital;
-                    return $urlLocation = "<script> window.location='fomentos/inicio&modulo=$modulo' </script>";
+                    return $urlLocation = "<script> window.location='inicio&modulo=$modulo' </script>";
                 }
             }
         } else {
-            $alerta = [
-                'alerta' => 'simples',
-                'titulo' => 'Erro!',
-                'texto' => 'Usuário / Senha incorreto',
-                'tipo' => 'error'
-            ];
+
+
+                return $urlLocation = "<script> window.location='inicio/inicio' </script>";
+
+
+
         }
-        return MainModel::sweetAlert($alerta);
+
     }
 
     /**
@@ -69,8 +69,35 @@ class UsuarioController extends UsuarioModel
      */
     public function recuperaUsuario($id)
     {
-        return DbModel::getInfo('usuarios',$id);
+        return DbModel::getInfo('usuario',$id);
     }
 
-   
+    public function cadastrar($dados)
+    {
+        unset($dados['_method']);
+        $dados = MainModel::limpaPost($dados);
+
+        $insert = DbModel::insert("usuario", $dados);
+        if ($insert->rowCount() >= 1) {
+            $alerta = [
+                'alerta' => 'sucesso',
+                'titulo' => 'Usuário Cadastrado!',
+                'texto' => 'Dados cadastrados com sucesso!',
+                'tipo' => 'success',
+                'location' => SERVERURL . 'login'
+            ];
+        } else {
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Oops! Algo deu Errado!',
+                'texto' => 'Falha ao salvar os dados no servidor, tente novamente mais tarde',
+                'tipo' => 'error',
+                'location' => SERVERURL . 'login'
+            ];
+        }
+
+        return MainModel::sweetAlert($alerta);
+    }
+
+
 }

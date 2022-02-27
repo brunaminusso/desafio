@@ -18,7 +18,7 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
             <form action="" method="POST">
                 <label>Usuário</label>
                 <div class="input-group mb-3">
-                    <input name="usuario" type="text" class="form-control" placeholder="Usuário" maxlength="7" required>
+                    <input name="usuario" type="text" class="form-control" placeholder="Usuário" maxlength="45" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -39,7 +39,7 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+                        <button href="<?= SERVERURL ?>inicio/incio" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
                     </div>
                     <!-- /.col -->
                 </div>
