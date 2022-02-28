@@ -17,7 +17,7 @@ class UsuarioController extends UsuarioModel
     {
         $email = MainModel::limparString($_POST['usuario']);
         $senha = MainModel::limparString($_POST['senha']);
-        $senha = MainModel::encryption($senha);
+        /*$senha = MainModel::encryption($senha);*/
 
         $dadosLogin = [
             'usuario' => $email,
@@ -27,14 +27,14 @@ class UsuarioController extends UsuarioModel
         $consultaUsuario = UsuarioModel::getUsuario($dadosLogin);
 
         if ($consultaUsuario->rowCount() == 1) {
-            $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
+            $usuario = $consultaUsuario->fetch();
             session_start(['name' => 'curso']);
-            $_SESSION['login_g'] = $usuario['nome'];
+            $_SESSION['login_g'] = $usuario['email'];
             $_SESSION['nome_g'] = $usuario['nome'];
             $_SESSION['usuario_id_g'] = $usuario['id'];
 
             if (!$modulo) {
-                return $urlLocation = "<script> window.location='inicio/inicio' </script>";
+                return $urlLocation = "<script> window.location='curso' </script>";
             } else {
                 if ($modulo == 8) {
                     $_SESSION['edital_s'] = $edital;
@@ -42,14 +42,14 @@ class UsuarioController extends UsuarioModel
                 }
             }
         } else {
-
-
-                return $urlLocation = "<script> window.location='inicio/inicio' </script>";
-
-
-
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Erro!',
+                'texto' => 'Usuário / Senha incorreto',
+                'tipo' => 'error'
+            ];
         }
-
+        return MainModel::sweetAlert($alerta);
     }
 
     /**

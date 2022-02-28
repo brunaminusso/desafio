@@ -222,7 +222,7 @@ class MainModel extends DbModel
     protected function log($descricao)
     {
         $dadosLog = [
-            'usuario_id' => $_SESSION['usuario_id_s'],
+            'usuario_id' => $_SESSION['usuario_id_g'],
             'ip' => $_SERVER['REMOTE_ADDR'],
             'data' => date('Y-m-d H:i:s'),
             'descricao' => $descricao

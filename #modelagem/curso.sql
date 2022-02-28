@@ -1,36 +1,37 @@
-create database CURSO;
+CREATE DATABASE `curso`;
 
-use curso;
+USE `curso`;
 
-create table cursos(
-    ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    NOME VARCHAR(45) NOT NULL,
-    DURACAO INT,
-    PUBLICADO tinyint(1) NOT NULL
+CREATE TABLE `cursos`(
+    `id` int primary key NOT NULL AUTO_INCREMENT,
+    `nome` varchar(45) NOT NULL,
+    `duracao` int,
+    `publicado` tinyint(1) NOT NULL
     );
 
-CREATE TABLE PESSOAS(
-    ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    NOME VARCHAR(120) NOT NULL,
-    EMAIL VARCHAR(120) NOT NULL,
-    data_nascimento DATE NOT NULL,
-    TELEFONE VARCHAR(15) NOT NULL,
-    PUBLICADO tinyint(1) NOT NULL    
+CREATE TABLE `pessoas`(
+    `id` int primary key NOT NULL AUTO_INCREMENT,
+    `nome` varchar(120) NOT NULL,
+    `email` varchar(120) NOT NULL,
+    `data_nascimento` date NOT NULL,
+    `telefone` varchar(15) NOT NULL,
+    `publicado` tinyint(1) NOT NULL    
     );
 
-CREATE TABLE CURSOS_PESSOAS(
-    CURSOS_ID INT,
-    PESSOA_FISICAS_ID INT NOT NULL,
-    SEMESTRE tinyint(5) NOT NULL,	
-    FOREIGN KEY(CURSOS_ID) REFERENCES CURSOS(ID),
-    FOREIGN KEY(PESSOA_FISICAS_ID) REFERENCES PESSOAS(ID)
+CREATE TABLE `cursos_pessoas`(
+    `cursos_id` int,
+    `pessoa_fisicas_id` int NOT NULL,
+    `semestre` tinyint(5) NOT NULL,	
+    FOREIGN KEY(`cursos_id`) REFERENCES `cursos`(`id`),
+    FOREIGN KEY(`pessoa_fisicas_id`) REFERENCES `pessoas`(`id`)
     );
 
-CREATE TABLE USUARIO(
-    ID INT PRIMARY KEY,
-    NOME VARCHAR(120) NOT NULL,
-    EMAIL VARCHAR(120) NOT NULL
-    SENHA VARCHAR(60) NOT NULL,
-    TELEFONE VARCHAR(15) NOT NULL,
-    PUBLICADO tinyint(1) NOT NULL    
+CREATE TABLE `usuario`(
+    `id` int primary key NOT NULL AUTO_INCREMENT,
+    `nome` varchar(120) NOT NULL,
+    `email` varchar(120) NOT NULL,
+    `senha` varchar(60) NOT NULL,
+    `telefone` varchar(15) NOT NULL,
+    `publicado` tinyint(1) NOT NULL    
     );
+

@@ -57,11 +57,11 @@ elseif ($view == 'recupera_senha'):
 elseif($view == 'resete_senha'):
     require_once "./views/modulos/inicio/resete_senha.php";
 else:
-    session_start(['name' => 'sis']);
+    session_start(['name' => 'curso']);
     require_once "./controllers/UsuarioController.php";
     $usuario = new UsuarioController();
 
-    if (!isset($_SESSION['usuario_id_s'])) {
+    if (!isset($_SESSION['usuario_id_g'])) {
         $usuario->forcarFimSessao();
     }
     ?>

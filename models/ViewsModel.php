@@ -51,7 +51,9 @@ class ViewsModel
             $conteudo = "recupera_senha";
         } elseif ($modulo == "resete_senha") {
             $conteudo = "resete_senha";
-        } else {
+        } elseif ($modulo == "inicio") {
+            $conteudo = "./views/modulos/inicio/inicio.php";}
+        else {
             $conteudo = "login";
         }
 
