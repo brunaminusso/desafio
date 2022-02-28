@@ -40,13 +40,13 @@
 
                 <li class="nav-header">PESSOAS</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= SERVERURL ?>pessoa/pessoa_lista" class="nav-link">
                         <i class="fas fa-circle"></i>
                         <p>Usuários</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= SERVERURL ?>curso/curso_lista" class="nav-link">
                         <i class="fas fa-circle"></i>
                         <p>Cursos</p>
                     </a>

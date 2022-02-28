@@ -34,9 +34,9 @@ class UsuarioController extends UsuarioModel
             $_SESSION['usuario_id_g'] = $usuario['id'];
 
             if (!$modulo) {
-                return $urlLocation = "<script> window.location='curso' </script>";
+                return $urlLocation = "<script> window.location='curso/curso_cadastro' </script>";
             } else {
-                if ($modulo == 8) {
+                if ($modulo != NULL) {
                     $_SESSION['edital_s'] = $edital;
                     return $urlLocation = "<script> window.location='inicio&modulo=$modulo' </script>";
                 }
