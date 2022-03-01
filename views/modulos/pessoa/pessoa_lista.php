@@ -12,7 +12,7 @@ $pessoas = $pessoaObj->listarPessoa();
                 <h1 class="m-0 text-dark">Pessoas</h1>
             </div><!-- /.col -->
             <div class="col-2">
-                <a href="<?= SERVERURL ?>pessoa_cadastro" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Adicionar</a>
+                <a href="<?= SERVERURL ?>pessoa/pessoa_cadastro" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Adicionar</a>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -51,7 +51,7 @@ $pessoas = $pessoaObj->listarPessoa();
                                 <td>
                                     <div class="row">
                                         <div class="col-md">
-                                            <a href="<?= SERVERURL . "pessoa_cadastro&id=" . $pessoaObj->encryption($pessoa->id) ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Editar</a>
+                                            <a href="<?= SERVERURL . "pessoa/pessoa_cadastro&id=" . $pessoaObj->encryption($pessoa->id) ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Editar</a>
                                         </div>
                                         <div class="col-md">
                                             <form class="form-horizontal formulario-ajax" method="POST" action="<?= SERVERURL ?>ajax/pessoaAjax.php" role="form" data-form="delete">

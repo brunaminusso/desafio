@@ -53,7 +53,7 @@ if ($id){
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="ps_data_nascimento">Data de nascimento: </label>
-                                    <input type="date" class="form-control" id="ps_data_nascimento" name="data_nascimento" value="<?= $pessoa->data_nascimento ?? null ?>" required>
+                                    <input type="date" class="form-control" id="ps_data_nascimento" name="ps_data_nascimento" value="<?= $pessoa->data_nascimento ?? null ?>" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="ps_telefone">Telefone: </label>
@@ -73,7 +73,7 @@ if ($id){
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <a href="<?= SERVERURL ?>pessoa_lista">
+                            <a href="<?= SERVERURL ?>pessoa/pessoa_lista">
                                 <button type="button" class="btn btn-default pull-left">Voltar</button>
                             </a>
                             <button type="submit" class="btn btn-info float-right">Gravar</button>

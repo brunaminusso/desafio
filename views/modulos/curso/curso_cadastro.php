@@ -51,7 +51,7 @@ if ($id){
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <a href="<?= SERVERURL ?>curso_lista">
+                            <a href="<?= SERVERURL ?>curso/curso_lista">
                                 <button type="button" class="btn btn-default pull-left">Voltar</button>
                             </a>
                             <button type="submit" class="btn btn-info float-right">Gravar</button>

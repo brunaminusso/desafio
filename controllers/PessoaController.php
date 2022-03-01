@@ -12,15 +12,15 @@ class PessoaController extends PessoaModel
      * <p>Cadastro de pessoa</p>
      * @return string
      */
-    public function cadastrarPessoa():string
+    public function cadastrarPessoa(): string
     {
         $dadosLimpos = PessoaModel::limparStringPS($_POST);
 
         $insere = DbModel::insert('pessoas', $dadosLimpos['ps']);
-        if ($insere->rowCount()>0) {
+        if ($insere->rowCount() > 0) {
             $id = DbModel::connection()->lastInsertId();
 
-            if(isset($dadosLimpos['cp'])){
+            if (isset($dadosLimpos['cp'])) {
                 if (count($dadosLimpos['cp']) > 0) {
                     $dadosLimpos['cp']['pessoa_fisicas_id'] = $id;
                     DbModel::insert('cursos_pessoas', $dadosLimpos['cp']);
@@ -32,7 +32,7 @@ class PessoaController extends PessoaModel
                 'titulo' => 'Pessoa cadastrada!',
                 'texto' => 'Dados cadastrados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . "pessoa_cadastro&id=".MainModel::encryption($id)
+                'location' => SERVERURL . "pessoa_cadastro&id=" . MainModel::encryption($id)
             ];
         } else {
             $alerta = [
@@ -51,7 +51,7 @@ class PessoaController extends PessoaModel
      * @param $id
      * @return string
      */
-    public function editarPessoa($dados, $id):string
+    public function editarPessoa($dados, $id): string
     {
         unset($dados['_method']);
         unset($dados['id']);
@@ -80,7 +80,7 @@ class PessoaController extends PessoaModel
                 'titulo' => 'Pessoa alterado com sucesso!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . "pessoa_cadastro&id=".MainModel::encryption($id)
+                'location' => SERVERURL . "pessoa/pessoa_cadastro&id=" . MainModel::encryption($id)
             ];
         } else {
             $alerta = [
@@ -98,10 +98,10 @@ class PessoaController extends PessoaModel
      * @param $id
      * @return string
      */
-    public function apagarPessoa($id):string
+    public function apagarPessoa($id): string
     {
-        $apagar = $this->apaga("pessoas",$id);
-        if ($apagar->rowCount() >= 1){
+        $apagar = $this->apaga("pessoas", $id);
+        if ($apagar->rowCount() >= 1) {
             $alerta = [
                 'alerta' => 'sucesso',
                 'titulo' => 'Pessoa apagado!',
@@ -143,9 +143,28 @@ class PessoaController extends PessoaModel
      * @param int|string $id
      * @return false|mixed|object
      */
-    public function recuperarPessoa($id)
+    /*public function recuperarPessoa($id)
     {
         return $this->getInfo('pessoas', $this->decryption($id))->fetchObject();
+    }*/
+
+    /**
+     * <p>Recupera os dados da pessoa</p>
+     * @param int|string $id
+     * @return false|mixed|object
+     */
+    public function recuperarPessoa($id)
+    {
+        $id = parent::decryption($id);
+        return $this->consultaSimples("SELECT 
+                                               ps.*,
+                                               cp.*,     
+                                               cr.nome AS 'curso'
+                                               FROM pessoas ps
+                                               INNER JOIN cursos_pessoas AS cp ON ps.id = cp.pessoa_fisicas_id
+                                               INNER JOIN cursos AS cr ON cp.cursos_id = cr.id 
+                                               WHERE ps.id = '$id'
+                                               ")->fetchObject();
     }
 
 }
