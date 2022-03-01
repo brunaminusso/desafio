@@ -42,7 +42,7 @@ $cursos = $cursoObj->listarCurso();
                             <tbody>
                             <?php foreach ($cursos as $curso): ?>
                             <tr>
-                                <td><?=$curso->curso ?></td>
+                                <td><?=$curso->nome ?></td>
                                 <td><?=$curso->duracao ?></td>
                                 <td>
                                     <div class="row">

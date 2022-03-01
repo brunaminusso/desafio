@@ -1,26 +1,32 @@
 <?php
 /* @var $pedidoAjax */
 if ($pedidoAjax) {
-    require_once "../models/MainModel.php";
+    require_once "../models/PessoaModel.php";
 } else {
-    require_once "./models/MainModel.php";
+    require_once "./models/PessoaModel.php";
 }
 
-class PessoaController extends MainModel
+class PessoaController extends PessoaModel
 {
     /**
      * <p>Cadastro de pessoa</p>
-     * @param $dados
      * @return string
      */
-    public function cadastrarPessoa($dados):string
+    public function cadastrarPessoa():string
     {
-        unset($dados['_method']);
-        $dados = MainModel::limpaPost($dados);
+        $dadosLimpos = PessoaModel::limparStringPS($_POST);
 
-        $insert = DbModel::insert("pessoas", $dados);
-        if ($insert->rowCount() >= 1) {
-            $id = $this->connection()->lastInsertId();
+        $insere = DbModel::insert('pessoas', $dadosLimpos['ps']);
+        if ($insere->rowCount()>0) {
+            $id = DbModel::connection()->lastInsertId();
+
+            if(isset($dadosLimpos['cp'])){
+                if (count($dadosLimpos['cp']) > 0) {
+                    $dadosLimpos['cp']['pessoa_fisicas_id'] = $id;
+                    DbModel::insert('cursos_pessoas', $dadosLimpos['cp']);
+                }
+            }
+
             $alerta = [
                 'alerta' => 'sucesso',
                 'titulo' => 'Pessoa cadastrada!',
@@ -49,11 +55,26 @@ class PessoaController extends MainModel
     {
         unset($dados['_method']);
         unset($dados['id']);
-        $dados = MainModel::limpaPost($dados);
         $id = MainModel::decryption($id);
-        $update = DbModel::update('pessoas', $dados, $id);
+
+        $dadosLimpos = PessoaModel::limparStringPS($_POST);
+
+        $update = DbModel::update('pessoas', $dadosLimpos['ps'], $id);
 
         if ($update->rowCount() >= 1 || DbModel::connection()->errorCode() == 0) {
+
+            if (isset($dadosLimpos['cp'])) {
+                if (count($dadosLimpos['cp']) > 0) {
+                    $banco_existe = DbModel::consultaSimples("SELECT * FROM cursos_pessoas WHERE pessoa_fisicas_id = '$id'");
+                    if ($banco_existe->rowCount() > 0) {
+                        DbModel::updateEspecial('cursos_pessoas', $dadosLimpos['cp'], "pessoa_fisicas_id", $id);
+                    } else {
+                        $dadosLimpos['cp']['pessoa_fisicas_id'] = $id;
+                        DbModel::insert('cursos_pessoas', $dadosLimpos['cp']);
+                    }
+                }
+            }
+
             $alerta = [
                 'alerta' => 'sucesso',
                 'titulo' => 'Pessoa alterado com sucesso!',
@@ -105,7 +126,16 @@ class PessoaController extends MainModel
      */
     public function listarPessoa()
     {
-        return DbModel::listaPublicado('pessoas');
+        return DbModel::consultaSimples("SELECT 
+                                                 ps.id, 
+                                                 ps.nome, 
+                                                 ps.email,   
+                                                 ps.telefone, 
+                                                 cr.nome AS 'curso'
+                                                 FROM pessoas AS ps
+                                                 INNER JOIN cursos_pessoas AS cp ON ps.id = cp.pessoa_fisicas_id
+                                                 INNER JOIN cursos AS cr ON cp.cursos_id = cr.id       
+                                                 WHERE ps.publicado = 1 AND cr.publicado = 1")->fetchAll(PDO::FETCH_OBJ);
     }
 
     /**

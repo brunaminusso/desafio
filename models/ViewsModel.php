@@ -24,6 +24,7 @@ class ViewsModel
         $whitelist = [
             'inicio',
             'login',
+            'logout',
             'cadastro',
             'curso_cadastro',
             'curso_lista',
@@ -51,9 +52,7 @@ class ViewsModel
             $conteudo = "recupera_senha";
         } elseif ($modulo == "resete_senha") {
             $conteudo = "resete_senha";
-        } elseif ($modulo == "inicio") {
-            $conteudo = "./views/modulos/inicio/inicio.php";}
-        else {
+        } else {
             $conteudo = "login";
         }
 

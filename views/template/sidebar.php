@@ -38,11 +38,11 @@
                 }
                 ?>
 
-                <li class="nav-header">PESSOAS</li>
+                <li class="nav-header"></li>
                 <li class="nav-item">
                     <a href="<?= SERVERURL ?>pessoa/pessoa_lista" class="nav-link">
                         <i class="fas fa-circle"></i>
-                        <p>Usuários</p>
+                        <p>Pessoas</p>
                     </a>
                 </li>
                 <li class="nav-item">
