@@ -16,7 +16,6 @@ if ($id){
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Cadastro de pessoas</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -30,7 +29,7 @@ if ($id){
                 <!-- Horizontal Form -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Dados</h3>
+                        <h3 class="card-title"><?= ($id) ? 'Edição de pessoa' : 'Cadastro de pessoa' ?></h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -41,21 +40,21 @@ if ($id){
                     <?php endif; ?>
                         <div class="card-body">
                             <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-9">
                                     <label for="ps_nome">Nome: </label>
                                     <input type="text" class="form-control" id="nome" name="ps_nome" maxlength="120" value="<?= $pessoa->nome ?? null ?>" required>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="ps_email">Email: </label>
-                                    <input type="text" class="form-control" id="email" name="ps_email" maxlength="120" value="<?= $pessoa->email ?? null ?>" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="ps_data_nascimento">Data de nascimento: </label>
                                     <input type="date" class="form-control" id="ps_data_nascimento" name="ps_data_nascimento" value="<?= $pessoa->data_nascimento ?? null ?>" required>
                                 </div>
-                                <div class="form-group col-md-6">
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-9">
+                                    <label for="ps_email">Email: </label>
+                                    <input type="text" class="form-control" id="email" name="ps_email" maxlength="120" value="<?= $pessoa->email ?? null ?>" required>
+                                </div>
+                                <div class="form-group col-md-3">
                                     <label for="ps_telefone">Telefone: </label>
                                     <input type="text" class="form-control" id="telefone" name="ps_telefone" maxlength="11" onkeyup="mascara( this, mtel )" value="<?= $pessoa->telefone ?? null ?>" required>
                                 </div>

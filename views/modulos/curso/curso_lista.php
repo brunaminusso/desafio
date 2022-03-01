@@ -9,7 +9,6 @@ $cursos = $cursoObj->listarCurso();
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-10">
-                <h1 class="m-0 text-dark">Cursos</h1>
             </div><!-- /.col -->
             <div class="col-2">
                 <a href="<?= SERVERURL ?>curso/curso_cadastro" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Adicionar</a>
@@ -36,7 +35,7 @@ $cursos = $cursoObj->listarCurso();
                             <tr>
                                 <th>Curso</th>
                                 <th>Duração</th>
-                                <th>Ação</th>
+                                <th style="width: 21%">Ação</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -9,8 +9,8 @@
 </head>
     <!-- Brand Logo -->
     <a href="<?= SERVERURL ?>inicio" class="brand-link">
-        <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="CURSOS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
+        <img src="<?= SERVERURL ?>views/dist/img/logocurso.png" alt="CURSOS Logo" class="brand-image-xl img-circle elevation-3" style="opacity: .8">
+        &nbsp;&nbsp;<span class="brand-text font-weight-light"><?= NOMESIS ?></span>
     </a>
 
     <!-- Sidebar -->
@@ -37,18 +37,17 @@
                     include $menu;
                 }
                 ?>
-
-                <li class="nav-header"></li>
+                <li class="nav-header" style="font-size: large">Cursos</li>
                 <li class="nav-item">
                     <a href="<?= SERVERURL ?>pessoa/pessoa_lista" class="nav-link">
-                        <i class="fas fa-circle"></i>
-                        <p>Pessoas</p>
+                        <i class="fas fa-user-graduate"></i>
+                        <p>&nbsp;&nbsp;Pessoas</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= SERVERURL ?>curso/curso_lista" class="nav-link">
-                        <i class="fas fa-circle"></i>
-                        <p>Cursos</p>
+                        <i class="fas fa-award"></i>
+                        <p>&nbsp;&nbsp;Cursos</p>
                     </a>
                 </li>
 
