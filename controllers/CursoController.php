@@ -26,7 +26,7 @@ class CursoController extends MainModel
                 'titulo' => 'Curso cadastrado!',
                 'texto' => 'Dados cadastrados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . "curso_cadastro&id=".MainModel::encryption($id)
+                'location' => SERVERURL . "curso/curso_cadastro&id=".MainModel::encryption($id)
             ];
         } else {
             $alerta = [
@@ -59,7 +59,7 @@ class CursoController extends MainModel
                 'titulo' => 'Curso alterado com sucesso!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . "curso_cadastro&id=".MainModel::encryption($id)
+                'location' => SERVERURL . "curso/curso_cadastro&id=".MainModel::encryption($id)
             ];
         } else {
             $alerta = [
@@ -86,7 +86,7 @@ class CursoController extends MainModel
                 'titulo' => 'Curso apagado!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . 'curso_lista'
+                'location' => SERVERURL . 'curso/curso_lista'
             ];
         } else {
             $alerta = [

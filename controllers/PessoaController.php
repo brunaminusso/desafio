@@ -32,7 +32,7 @@ class PessoaController extends PessoaModel
                 'titulo' => 'Pessoa cadastrada!',
                 'texto' => 'Dados cadastrados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . "pessoa_cadastro&id=" . MainModel::encryption($id)
+                'location' => SERVERURL . "pessoa/pessoa_cadastro&id=" . MainModel::encryption($id)
             ];
         } else {
             $alerta = [
@@ -107,7 +107,7 @@ class PessoaController extends PessoaModel
                 'titulo' => 'Pessoa apagado!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . 'pessoa_lista'
+                'location' => SERVERURL . 'pessoa/pessoa_lista'
             ];
         } else {
             $alerta = [
@@ -135,18 +135,8 @@ class PessoaController extends PessoaModel
                                                  FROM pessoas AS ps
                                                  INNER JOIN cursos_pessoas AS cp ON ps.id = cp.pessoa_fisicas_id
                                                  INNER JOIN cursos AS cr ON cp.cursos_id = cr.id       
-                                                 WHERE ps.publicado = 1 AND cr.publicado = 1")->fetchAll(PDO::FETCH_OBJ);
+                                                 WHERE ps.publicado = 1")->fetchAll(PDO::FETCH_OBJ);
     }
-
-    /**
-     * <p>Recupera pessoa através do id</p>
-     * @param int|string $id
-     * @return false|mixed|object
-     */
-    /*public function recuperarPessoa($id)
-    {
-        return $this->getInfo('pessoas', $this->decryption($id))->fetchObject();
-    }*/
 
     /**
      * <p>Recupera os dados da pessoa</p>

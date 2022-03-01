@@ -43,7 +43,7 @@ if ($id){
                                     <input type="text" class="form-control" id="nome" name="nome" maxlength="45" value="<?= $curso->nome ?? null ?>" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="nome">Duração: </label>
+                                    <label for="nome">Duração em horas: </label>
                                     <input type="text" class="form-control" id="duracao" name="duracao" maxlength="" value="<?= $curso->duracao ?? null ?>" required>
                                 </div>
                             </div>
