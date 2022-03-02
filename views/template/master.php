@@ -35,8 +35,8 @@ $view = $template->exibirViewController();
     <!-- jQuery -->
     <script src="<?= SERVERURL ?>node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= SERVERURL ?>views/dist/img/logo.png" />
-    <link rel="icon" href="<?= SERVERURL ?>views/dist/img/logo.png" />
+    <link rel="shortcut icon" href="<?= SERVERURL ?>views/dist/img/logocurso.png" />
+    <link rel="icon" href="<?= SERVERURL ?>views/dist/img/logocurso.png" />
     <!-- Select2 -->
     <link rel="stylesheet" href="<?= SERVERURL ?>node_modules/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="<?= SERVERURL ?>node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -139,6 +139,19 @@ else:
 <script src="<?= SERVERURL ?>node_modules/select2/dist/js/select2.full.min.js"></script>
 <script src="<?= SERVERURL ?>node_modules/select2/dist/js/i18n/pt-BR.js" type="text/javascript"></script>
 
+<script>
+    $(document).ready(function (){
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        $('.select2bs4').select2({
+            theme: 'bootstrap4',
+            language: 'pt-BR'
+        });
+    });
+</script>
+
 <?= (isset($javascript)) ? $javascript : ''; ?>
 </body>
 </html>
+

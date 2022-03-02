@@ -1,11 +1,9 @@
 <?php
 require_once "./controllers/PessoaController.php";
-require_once "./controllers/CursoController.php";
 $pessoaObj = new PessoaController();
 
 $id = $_GET['id'] ?? null;
-$curso_id = isset($_GET['curso_id']) ? $_GET['curso_id'] : null;
-$pessoa_fisicas_id = isset($_GET['pessoa_fisicas_id']) ? $_GET['pessoa_fisicas_id'] : null;
+
 if ($id){
     $pessoa = $pessoaObj->recuperarPessoa($id);
 }
@@ -56,15 +54,15 @@ if ($id){
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="ps_telefone">Telefone: </label>
-                                    <input type="text" class="form-control" id="telefone" name="ps_telefone" maxlength="11" onkeyup="mascara( this, mtel )" value="<?= $pessoa->telefone ?? null ?>" required>
+                                    <input type="text" class="form-control" id="telefone" name="ps_telefone" maxlength="15" onkeyup="mascara( this, mtel )" value="<?= $pessoa->telefone ?? null ?>" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col">
+                                <div class="form-group col-md-12">
                                     <label for="curso">Curso:</label>
-                                    <select class="form-control select2bs4" id="cursos_id" name="cp_cursos_id">
+                                    <select id="cursos_id" name="cp_cursos_id" required class="form-control select2bs4">
                                         <option value="">Selecione uma opção...</option>
-                                        <?php $pessoaObj->geraOpcao("cursos",$pessoa->cursos_id ?? null) ?>
+                                        <?php $pessoaObj->geraOpcao("cursos",$pessoa->cursos_id ?? NULL)?>
                                     </select>
                                 </div>
                             </div>

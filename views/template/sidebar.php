@@ -68,5 +68,16 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+<script type="text/javascript">
+    var url = window.location;
 
-<?= $view->retornaMenuAtivo() ?>
+    $('ul.nav-sidebar a').filter(function() {
+        return this.href == url;
+    }).addClass('active');
+
+        // for treeview
+    $('ul.nav-treeview a').filter(function() {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+</script>
+

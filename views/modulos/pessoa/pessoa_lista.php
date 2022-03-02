@@ -35,7 +35,6 @@ $pessoas = $pessoaObj->listarPessoa();
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Telefone</th>
                                 <th>Curso</th>
                                 <th style="width: 21%">Ação</th>
                             </tr>
@@ -45,7 +44,6 @@ $pessoas = $pessoaObj->listarPessoa();
                             <tr>
                                 <td><?=$pessoa->nome ?></td>
                                 <td><?=$pessoa->email ?></td>
-                                <td><?=$pessoa->telefone ?></td>
                                 <td><?=$pessoa->curso ?></td>
                                 <td>
                                     <div class="row">
@@ -70,7 +68,6 @@ $pessoas = $pessoaObj->listarPessoa();
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Telefone</th>
                                 <th>Curso</th>
                                 <th>Ação</th>
                             </tr>
