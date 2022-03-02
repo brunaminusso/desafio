@@ -17,7 +17,7 @@ class UsuarioController extends UsuarioModel
     {
         $email = MainModel::limparString($_POST['usuario']);
         $senha = MainModel::limparString($_POST['senha']);
-        /*$senha = MainModel::encryption($senha);*/
+        $senha = MainModel::encryption($senha);
 
         $dadosLogin = [
             'usuario' => $email,
@@ -76,6 +76,7 @@ class UsuarioController extends UsuarioModel
     {
         unset($dados['_method']);
         $dados = MainModel::limpaPost($dados);
+        $dados['senha'] = MainModel::encryption($dados['senha']);
 
         $insert = DbModel::insert("usuario", $dados);
         if ($insert->rowCount() >= 1) {
@@ -99,5 +100,55 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
+    public function editar($dados, $id){
+        unset($dados['_method']);
+        unset($dados['id']);
+        $dados = MainModel::limpaPost($dados);
+        $edita = DbModel::update('usuario', $dados, $id);
+        if ($edita) {
+            $alerta = [
+                'alerta' => 'sucesso',
+                'titulo' => 'Usuário',
+                'texto' => 'Informações alteradas com sucesso!',
+                'tipo' => 'success',
+                'location' => SERVERURL.'inicio/edita'
+            ];
+        } else {
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Erro!',
+                'texto' => 'Erro ao salvar!',
+                'tipo' => 'error',
+                'location' => SERVERURL.'inicio/edita'
+            ];
+        }
+        return MainModel::sweetAlert($alerta);
+    }
+
+    public function trocaSenha($dados,$id){
+        unset($dados['_method']);
+        $dados = MainModel::limpaPost($dados);
+        $dados['senha'] = MainModel::encryption($dados['senha']);
+        $edita = DbModel::update('usuario', $dados, $id);
+        if ($edita) {
+            $alerta = [
+                'alerta' => 'sucesso',
+                'titulo' => 'Usuário',
+                'texto' => 'Senha alterada com sucesso!',
+                'tipo' => 'success',
+                'location' => SERVERURL.'inicio/edita'
+            ];
+        }
+        else{
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Erro!',
+                'texto' => 'Erro ao salvar!',
+                'tipo' => 'error',
+                'location' => SERVERURL.'inicio/edita'
+            ];
+        }
+        return MainModel::sweetAlert($alerta);
+    }
 
 }

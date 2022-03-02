@@ -51,13 +51,13 @@
                     </a>
                 </li>
 
-                <li class="nav-header">CONTA</li>
-                <!--<li class="nav-item">
-                <a href="<?/*= SERVERURL */?>inicio/edita" class="nav-link">
+                <li class="nav-header" style="font-size: large">Conta</li>
+                <li class="nav-item">
+                <a href="<?= SERVERURL ?>inicio/edita" class="nav-link">
                     <i class="fa fa-user"></i>
                     <p>Minha conta</p>
                 </a>
-            </li>-->
+            </li>
                 <li class="nav-item">
                     <a href="<?= SERVERURL ?>inicio/logout" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>&nbsp; <p>Sair</p>

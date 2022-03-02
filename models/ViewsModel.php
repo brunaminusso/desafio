@@ -25,6 +25,7 @@ class ViewsModel
             'inicio',
             'login',
             'logout',
+            'edita',
             'cadastro',
             'curso_cadastro',
             'curso_lista',

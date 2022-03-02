@@ -8,7 +8,7 @@ $UsuarioObj = new UsuarioController();
     <div class="card w-50">
         <div class="card-header bg-dark">
             <a href="<?= SERVERURL ?>inicio" class="brand-link">
-                <img>
+                <img src="<?= SERVERURL ?>views/dist/img/logocurso.png" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
             </a>
         </div>
