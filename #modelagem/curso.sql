@@ -70,6 +70,4 @@ INSERT INTO `cursos_pessoas` (`cursos_id`, `pessoa_fisicas_id`) VALUES
         (9, 3),
         (1, 4);  
 
-INSERT INTO `usuario` (`id`, `nome`, `email, `senha`, `telefone`, `publicado`) VALUES
-        (1, 'Teste', 'teste@teste.com', '123456', '(11) 9999-9999', 1);
  
