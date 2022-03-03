@@ -77,7 +77,7 @@ class PessoaController extends PessoaModel
 
             $alerta = [
                 'alerta' => 'sucesso',
-                'titulo' => 'Pessoa alterado com sucesso!',
+                'titulo' => 'Pessoa alterada com sucesso!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
                 'location' => SERVERURL . "pessoa/pessoa_cadastro&id=" . MainModel::encryption($id)
@@ -104,7 +104,7 @@ class PessoaController extends PessoaModel
         if ($apagar->rowCount() >= 1) {
             $alerta = [
                 'alerta' => 'sucesso',
-                'titulo' => 'Pessoa apagado!',
+                'titulo' => 'Pessoa apagada!',
                 'texto' => 'Dados alterados com sucesso!',
                 'tipo' => 'success',
                 'location' => SERVERURL . 'pessoa/pessoa_lista'

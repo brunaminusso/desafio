@@ -34,7 +34,7 @@ class UsuarioController extends UsuarioModel
             $_SESSION['usuario_id_g'] = $usuario['id'];
 
             if (!$modulo) {
-                return $urlLocation = "<script> window.location='curso/curso_cadastro' </script>";
+                return $urlLocation = "<script> window.location='inicio/inicio' </script>";
             } else {
                 if ($modulo != NULL) {
                     $_SESSION['edital_g'] = $edital;
@@ -72,6 +72,10 @@ class UsuarioController extends UsuarioModel
         return DbModel::getInfo('usuario',$id);
     }
 
+    /**
+     * <p>Cadastra um novo usuario</p>
+     * @return string
+     */
     public function cadastrar($dados)
     {
         unset($dados['_method']);
@@ -100,6 +104,12 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
+    /**
+     * <p>Edita os dados do usuário</p>
+     * @param $dados
+     * @param $id
+     * @return string
+     */
     public function editar($dados, $id){
         unset($dados['_method']);
         unset($dados['id']);
@@ -125,6 +135,12 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
+    /**
+     * <p>Troca a senha do usuário</p>
+     * @param $dados
+     * @param $id
+     * @return string
+     */
     public function trocaSenha($dados,$id){
         unset($dados['_method']);
         $dados = MainModel::limpaPost($dados);

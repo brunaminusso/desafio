@@ -8,6 +8,11 @@ if ($pedidoAjax) {
 
 class UsuarioModel extends MainModel
 {
+    /**
+     * <p>Recupera o usuário</p>
+     * @param $dados
+     * @return false|PDOStatement
+     */
     protected function getUsuario($dados) {
         $pdo = parent::connection();
         $sql = "SELECT * FROM usuario WHERE email = :usuario AND senha = :senha AND publicado = 1";

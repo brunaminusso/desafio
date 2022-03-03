@@ -1,11 +1,3 @@
-<?php
-unset($_SESSION['login_g']);
-unset($_SESSION['senha_g']);
-unset($_SESSION['usuario_id_g']);
-
-$viewObj = new ViewsController();
-?>
-
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">

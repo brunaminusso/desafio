@@ -62,7 +62,7 @@ if ($id){
                                     <label for="curso">Curso: </label>
                                     <select id="cursos_id" name="cp_cursos_id" required class="form-control select2bs4">
                                         <option value="">Selecione uma opção...</option>
-                                        <?php $pessoaObj->geraOpcao("cursos",$pessoa->cursos_id ?? NULL)?>
+                                        <?php $pessoaObj->geraOpcao("cursos",$pessoa->cursos_id, 1)?>
                                     </select>
                                 </div>
                             </div>

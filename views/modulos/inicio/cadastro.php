@@ -27,13 +27,11 @@ $UsuarioObj = new UsuarioController();
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-8">
                         <label for="email">E-mail: </label>
                         <input type="email" class="form-control" name="email" required id="email">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Insira sua senha *</label>
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
                         <div class="invalid-feedback">
@@ -42,7 +40,7 @@ $UsuarioObj = new UsuarioController();
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="cadastra">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="cadastra">Cadastrar</button>
                 </div>
                 <div class="resposta-ajax">
                 </div>

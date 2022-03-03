@@ -105,7 +105,7 @@ class CursoController extends MainModel
      */
     public function listarCurso()
     {
-        return DbModel::consultaSimples("SELECT * FROM cursos WHERE duracao >= 0")->fetchAll(PDO::FETCH_OBJ);
+        return DbModel::consultaSimples("SELECT * FROM cursos WHERE duracao >= 0 AND publicado = 1")->fetchAll(PDO::FETCH_OBJ);
     }
 
     /**
