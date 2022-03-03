@@ -46,9 +46,6 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
             </form>
 
             <div class="mb-0 text-left">
-                <p class="mb-1">
-                    <a href="<?= SERVERURL ?>recupera_senha">Esqueci minha senha</a>
-                </p>
                 <p class="mb-0">
                     <a href="cadastro" class="text-center">Não possui cadastro? Clique aqui</a>
                 </p>
